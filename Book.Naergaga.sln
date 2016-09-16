@@ -9,6 +9,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Book.Naergaga.Models", "Boo
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Book.Naergaga.CmdTest", "Book.Naergaga.CmdTest\Book.Naergaga.CmdTest.csproj", "{A73F2AB7-00D4-4486-9CBF-E5FD1300762B}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Book.Naergaga.Service", "Book.Naergaga.Service\Book.Naergaga.Service.csproj", "{531F2DAC-BB1F-4C68-AED4-4815B5C4ADCB}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -27,6 +29,10 @@ Global
 		{A73F2AB7-00D4-4486-9CBF-E5FD1300762B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A73F2AB7-00D4-4486-9CBF-E5FD1300762B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A73F2AB7-00D4-4486-9CBF-E5FD1300762B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{531F2DAC-BB1F-4C68-AED4-4815B5C4ADCB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{531F2DAC-BB1F-4C68-AED4-4815B5C4ADCB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{531F2DAC-BB1F-4C68-AED4-4815B5C4ADCB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{531F2DAC-BB1F-4C68-AED4-4815B5C4ADCB}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
