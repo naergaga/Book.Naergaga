@@ -5,6 +5,10 @@ VisualStudioVersion = 14.0.25420.1
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Book.Naergaga", "Book.Naergaga\Book.Naergaga.csproj", "{0588283A-52F1-48B8-B515-2112FC790305}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Book.Naergaga.Models", "Book.Naergaga.Models\Book.Naergaga.Models.csproj", "{6D448F4A-98E6-4EF3-8D11-CC0C96A391C5}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Book.Naergaga.CmdTest", "Book.Naergaga.CmdTest\Book.Naergaga.CmdTest.csproj", "{A73F2AB7-00D4-4486-9CBF-E5FD1300762B}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +19,14 @@ Global
 		{0588283A-52F1-48B8-B515-2112FC790305}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{0588283A-52F1-48B8-B515-2112FC790305}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{0588283A-52F1-48B8-B515-2112FC790305}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6D448F4A-98E6-4EF3-8D11-CC0C96A391C5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6D448F4A-98E6-4EF3-8D11-CC0C96A391C5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6D448F4A-98E6-4EF3-8D11-CC0C96A391C5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6D448F4A-98E6-4EF3-8D11-CC0C96A391C5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A73F2AB7-00D4-4486-9CBF-E5FD1300762B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A73F2AB7-00D4-4486-9CBF-E5FD1300762B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A73F2AB7-00D4-4486-9CBF-E5FD1300762B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A73F2AB7-00D4-4486-9CBF-E5FD1300762B}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

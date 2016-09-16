@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 
-namespace Book.Naergaga.Models
+namespace Book.Naergaga.Models.IdentityViewModel
 {
     public class ExternalLoginConfirmationViewModel
     {
