@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace Book.Naergaga.Service.ModelService.Interface
 {
-    interface ITagService:IEntityService<Tag,int>
+    public interface ITagService:IEntityService<Tag,int>
     {
     }
 }

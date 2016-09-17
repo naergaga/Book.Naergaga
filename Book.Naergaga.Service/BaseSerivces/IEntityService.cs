@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Book.Naergaga.Service.BaseSerivces
 {
-    interface IEntityService<T,K> where T:class
+    public interface IEntityService<T,K> where T:class
     {
         bool Create(T entity);
         bool Delete(K id);

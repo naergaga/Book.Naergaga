@@ -14,5 +14,10 @@ namespace Book.Naergaga.Service.ModelService.Implanment
     {
 
         public BookTagsService(DataContext context) : base(context) { }
+
+        public int CountTag(int id)
+        {
+            return _dbset.Where(t => t.TagId == id).Count();
+        }
     }
 }

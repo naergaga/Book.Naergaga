@@ -1,0 +1,10 @@
+﻿@model Book.Naergaga.Models.Entity.Tag
+@using (Html.BeginForm("Create"))
+{
+    <div class="input-group">
+       @Html.EditorFor(m=>m.Name,new { htmlAttributes=new {@class="form-control"}})
+        <span class="input-group-btn">
+            <button class="btn btn-default">Add</button>
+        </span>
+    </div>
+}

@@ -1,0 +1,57 @@
+﻿@model List<Book.Naergaga.Models.ViewModel.TagViewModel>
+@{
+    ViewBag.Title = "View";
+}
+
+@section css {
+    <style>
+        .begainEdit {
+            background-color:#eee;
+        }
+    </style>
+}
+
+@section scripts{
+    <script>
+        $(".btnDelTag").click(function () {
+            $.get($(event.target).attr("spot"), function (d) {
+                $(".body-content").prepend(d);
+                $("#deleteModal").modal("show");
+            });
+        });
+
+        $(".btnEditTag").click(function () {
+            $.get($(event.target).attr("spot"), function (d) {
+                $(".body-content").prepend(d);
+                $("#deleteModal").modal("show");
+            });
+        });
+
+    </script>
+}
+
+<h2>Tag</h2>
+
+<div>
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Text</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>@item.Id</td>
+                    <td>@item.Name</td>
+                    <td><a spot="@Url.Action("Delete",new { id = item.Id })" class="btnDelTag">Delete</a></td>
+                    <td><a spot="@Url.Action("Edit",new { id = item.Id })" class="btnEditTag">Edit</a></td>
+                </tr>
+            }
+        </tbody>
+    </table>
+    @Html.Action("Create")
+</div>

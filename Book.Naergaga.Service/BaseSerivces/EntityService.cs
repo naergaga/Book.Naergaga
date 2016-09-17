@@ -9,8 +9,8 @@ namespace Book.Naergaga.Service.BaseSerivces
 {
     public class EntityService<T, K> : IEntityService<T, K> where T : class
     {
-        private DbContext _context;
-        private IDbSet<T> _dbset;
+        internal DbContext _context;
+        internal IDbSet<T> _dbset;
 
         public EntityService(DbContext context)
         {
