@@ -1,0 +1,33 @@
+﻿@model Book.Naergaga.Models.Entity.Author
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Author</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Name)
+        </dd>
+
+    </dl>
+    <dl class="dl-horizontal">
+        <dt>@Html.DisplayNameFor(model => model.RealName)</dt>
+        <dt>@Html.DisplayFor(model=>model.RealName)</dt>
+    </dl>
+    <dl class="dl-horizontal">
+        <dt>@Html.DisplayNameFor(model => model.Description)</dt>
+        <dt>@Html.DisplayFor(model => model.Description)</dt>
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Back to List", "Index")
+</p>

@@ -19,9 +19,10 @@ namespace Book.Naergaga.Models.EntityContext
         }
 
         public IDbSet<Author> Authors { get; set; }
-        public IDbSet<EBook> Books { get; set; }
+        public IDbSet<EBook> EBooks { get; set; }
         public IDbSet<Category> Categories { get; set; }
         public IDbSet<Tag> Tags { get; set; }
         public IDbSet<BookTags> BookTags { get; set; }
+
     }
 }

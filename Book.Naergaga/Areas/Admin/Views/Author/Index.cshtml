@@ -1,0 +1,46 @@
+﻿@model Book.Naergaga.Models.AdminView.AuthorIndexViewModel
+
+@{
+    ViewBag.Title = "Index";
+    var authors = Model.Author;
+    var option = Model.Option;
+}
+
+@section css {
+    <link href="~/Content/tablesorter/theme.default.min.css" rel="stylesheet" />
+}
+
+@section scripts{
+    <script src="~/Scripts/tablesorter/jquery.tablesorter.combined.js"></script>
+    <script src="~/Scripts/Admin/Author/index.js"></script>
+}
+
+<h2>Index</h2>
+
+<p>
+    <a spot="@Url.Action("Create")" class="btnCreateAuthor">Create</a>
+</p>
+<table id="myTable" class="hidden">
+    <thead>
+        <tr>
+            <th>Id</th>
+            <th>Name</th>
+            <th>Description</th>
+            <th></th>
+        </tr>
+    </thead>
+    @foreach (var item in authors)
+    {
+        <tr>
+            <td>@item.Id</td>
+            <td>@item.Name</td>
+            <td>@item.Description</td>
+            <td>
+                <a spot="@Url.Action("Delete",new { id = item.Id })" class="btnDelAuthor">Delete</a> |
+                <a spot="@Url.Action("Edit",new { id = item.Id })" class="btnEditAuthor">Edit</a> |
+                @Html.ActionLink("Details", "Details", new { id = item.Id })
+            </td>
+        </tr>
+    }
+
+</table>

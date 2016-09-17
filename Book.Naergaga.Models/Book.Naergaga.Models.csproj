@@ -97,6 +97,15 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AdminView\BookEditViewModel.cs" />
+    <Compile Include="AdminView\AuthorEditViewModel.cs" />
+    <Compile Include="AdminView\BookIndexViewModel.cs" />
+    <Compile Include="AdminView\AuthorIndexViewModel.cs" />
+    <Compile Include="AdminView\TagEditViewModel.cs" />
+    <Compile Include="AdminView\CategoryEditViewModel.cs" />
+    <Compile Include="AdminView\CategoryIndexViewModel.cs" />
+    <Compile Include="AdminView\TagIndexViewModel.cs" />
+    <Compile Include="Common\PageOption.cs" />
     <Compile Include="EntityContext\DataContext.cs" />
     <Compile Include="Entity\Author.cs" />
     <Compile Include="Entity\EBook.cs" />

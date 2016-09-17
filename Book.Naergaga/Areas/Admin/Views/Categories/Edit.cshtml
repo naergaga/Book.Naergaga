@@ -1,0 +1,22 @@
+﻿@model Book.Naergaga.Models.AdminView.CategoryEditViewModel
+@{
+    var category = Model.Category;
+    var isCreate = Model.IsCreate;
+    var viewText = isCreate ? "Create" : "Update";
+    ViewBag.isCreate = isCreate;
+}
+<div class="modal fade" id="deleteModal">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">
+                    &times;
+                </button>
+                <h4>@viewText Category</h4>
+            </div>
+            <div class="modal-body">
+                @Html.Partial("CategoryEdit", category)
+            </div>
+        </div>
+    </div>
+</div>

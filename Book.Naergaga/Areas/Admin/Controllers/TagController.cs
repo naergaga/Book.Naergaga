@@ -1,4 +1,6 @@
 ﻿using AutoMapper;
+using Book.Naergaga.Models.AdminView;
+using Book.Naergaga.Models.Common;
 using Book.Naergaga.Models.Entity;
 using Book.Naergaga.Models.ViewModel;
 using Book.Naergaga.Service.ModelService.Interface;
@@ -13,17 +15,27 @@ namespace Book.Naergaga.Areas.Admin.Controllers
     public class TagController : Controller
     {
         private ITagService service;
+        private PageOption option;
 
-        public TagController(ITagService service)
+        public TagController(ITagService service, PageOption option)
         {
             this.service = service;
+            this.option = option;
+            this.option.Asc = false;
         }
 
         // GET: Admin/Tag
-        public ActionResult Index()
+        public ActionResult Index(int? currentPage)
         {
-            var tags = service.GetAll();
-            return View(Mapper.Map<List<TagViewModel>>(tags));
+            option.CurrentPage = currentPage ?? 1;
+            option.PageCount = service.CountPage(option.PageSize);
+            var tags = service.GetPage(option, t => t.Id);
+            var model = new TagIndexViewModel
+            {
+                Tags = tags,
+                Option = option
+            };
+            return View(model);
         }
 
         // GET: Admin/Tag/Details/5
@@ -35,7 +47,12 @@ namespace Book.Naergaga.Areas.Admin.Controllers
         // GET: Admin/Tag/Create
         public ActionResult Create()
         {
-            return PartialView(new Tag());
+            var model = new TagEditViewModel
+            {
+                IsCreate = true,
+                Tag = new Tag()
+            };
+            return PartialView("Edit");
         }
 
         // POST: Admin/Tag/Create
@@ -60,16 +77,11 @@ namespace Book.Naergaga.Areas.Admin.Controllers
         [HttpPost]
         public ActionResult Edit(Tag tag)
         {
-            try
-            {
-                service.Update(tag);
-
+            if (service.Update(tag))
                 return RedirectToAction("Index");
-            }
-            catch
-            {
-                return View();
-            }
+            else
+                //TODO: error occur
+                return null;
         }
 
         // GET: Admin/Tag/Delete/5
@@ -83,16 +95,11 @@ namespace Book.Naergaga.Areas.Admin.Controllers
         [HttpPost]
         public ActionResult Delete(int id, FormCollection collection)
         {
-            try
-            {
-                service.Delete(id);
-
+            if (service.Delete(id))
                 return RedirectToAction("Index");
-            }
-            catch
-            {
-                return View();
-            }
+            else
+                //TODO: error occur
+                return null;
         }
     }
 }

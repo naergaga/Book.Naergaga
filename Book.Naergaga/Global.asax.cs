@@ -19,7 +19,7 @@ namespace Book.Naergaga
 
         protected void Application_Start()
         {
-            ConfigAutoMapper(kernel.Get<IBookTagsService>());
+            ConfigAutoMapper(kernel.Get<IBookTagsService>(), kernel.Get<IBookService>());
 
             AreaRegistration.RegisterAllAreas();
             FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);
@@ -28,12 +28,15 @@ namespace Book.Naergaga
         }
 
         [Inject]
-        public void ConfigAutoMapper(IBookTagsService service1)
+        public void ConfigAutoMapper(IBookTagsService service1, IBookService service2)
         {
             AutoMapper.Mapper.Initialize(c =>
             {
                 c.CreateMap<Tag, TagViewModel>().AfterMap((s,d)=> {
                     d.Count = service1.CountTag(s.Id);
+                });
+                c.CreateMap<Category, CategoryViewModel>().AfterMap((s, d) => {
+                    d.BookCount = service2.CountBookInCategory(s.Id);
                 });
             });
         }

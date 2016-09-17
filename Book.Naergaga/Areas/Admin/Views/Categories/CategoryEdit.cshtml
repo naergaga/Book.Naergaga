@@ -1,0 +1,20 @@
+﻿@model Book.Naergaga.Models.Entity.Category
+    @{ 
+        var isCreate = (bool)ViewBag.isCreate;
+        var viewText = isCreate ? "Create" : "Update";
+    }
+@using (Html.BeginForm(isCreate ? "Create" : "Edit"))
+{
+    <div class="form-group">
+        @Html.LabelFor(m => m.Name, new { @class = "control-label col-sm-2" })
+        <div class="col-sm-10">
+            @Html.EditorFor(m => m.Name, new { htmlAttributes = new { @class = "form-control" } })
+        </div>
+    </div>
+    @Html.HiddenFor(m => m.Id)
+    <hr />
+    <div class="text-center">
+        <button type="submit" class="btn btn-danger">@viewText</button>
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+    </div>
+}

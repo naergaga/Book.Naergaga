@@ -1,7 +1,9 @@
-﻿using System;
+﻿using Book.Naergaga.Models.Common;
+using System;
 using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
+using System.Linq.Expressions;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -48,6 +50,23 @@ namespace Book.Naergaga.Service.BaseSerivces
             if (entity == null) return false;
             _context.Entry<T>(entity).State = EntityState.Modified;
             return _context.SaveChanges()>0;
+        }
+
+        public List<T> GetPage<TKey>(PageOption option, Expression<Func<T, TKey>> expression)
+        {
+            if (option.Asc)
+            {
+                return _dbset.OrderBy(expression).Skip((option.CurrentPage - 1) * option.PageSize).Take(option.PageSize).ToList();
+            }
+            else
+            {
+                return _dbset.OrderByDescending(expression).Skip((option.CurrentPage - 1) * option.PageSize).Take(option.PageSize).ToList();
+            }
+        }
+
+        public int CountPage(int pageSize)
+        {
+            return (int)Math.Ceiling(_dbset.Count() / (double)pageSize);
         }
     }
 }
