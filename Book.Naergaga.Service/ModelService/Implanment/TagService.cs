@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 
 namespace Book.Naergaga.Service.ModelService.Implanment
 {
-    public class TagService : EntityService<Tag,int>, ITagService
+    public class TagService : EntityService<Tag>, ITagService
     {
 
         public TagService(DataContext context) : base(context) { }

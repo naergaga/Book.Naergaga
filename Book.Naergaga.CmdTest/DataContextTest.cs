@@ -39,7 +39,7 @@ namespace Book.Naergaga.CmdTest
                 PostTime = DateTime.Now
             };
 
-            var book1 = context.Books.Add(book);
+            var book1 = context.EBooks.Add(book);
             context.Tags.Add(tag);
             context.SaveChanges();
 

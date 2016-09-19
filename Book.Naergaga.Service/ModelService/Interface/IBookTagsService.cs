@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace Book.Naergaga.Service.ModelService.Interface
 {
-    public interface IBookTagsService : IEntityService<BookTags, int>
+    public interface IBookTagsService : IEntityService<BookTags>
     {
         int CountTag(int id);
     }

@@ -289,6 +289,7 @@
     <Content Include="Areas\Admin\Views\BookTags\Details.cshtml" />
     <Content Include="Areas\Admin\Views\BookTags\Edit.cshtml" />
     <Content Include="Areas\Admin\Views\BookTags\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\BookTags\TagSet.cshtml" />
     <None Include="Scripts\jquery-3.1.0.intellisense.js" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />

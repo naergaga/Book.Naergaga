@@ -8,14 +8,14 @@ using System.Threading.Tasks;
 
 namespace Book.Naergaga.Service.BaseSerivces
 {
-    public interface IEntityService<T,K> where T:class
+    public interface IEntityService<T> where T:class
     {
         bool Create(T entity);
-        bool Delete(K id);
+        bool Delete(params object[] values);
         bool Update(T entity);
         List<T> GetAll();
         int CountPage(int pageSize);
         List<T> GetPage<TKey>(PageOption option, Expression<Func<T, TKey>> expression);
-        T GetById(K id);
+        T GetById(params object[] values);
     }
 }

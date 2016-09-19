@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace Book.Naergaga.Service.ModelService.Interface
 {
-    public interface IBookService : IEntityService<EBook, int>
+    public interface IBookService : IEntityService<EBook>
     {
         int CountBookInCategory(int id);
         int CountBookInAuthor(int id);

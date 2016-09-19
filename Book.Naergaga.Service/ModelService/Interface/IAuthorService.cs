@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace Book.Naergaga.Service.ModelService.Interface
 {
-    public interface IAuthorService:IEntityService<Author,int>
+    public interface IAuthorService:IEntityService<Author>
     {
     }
 }

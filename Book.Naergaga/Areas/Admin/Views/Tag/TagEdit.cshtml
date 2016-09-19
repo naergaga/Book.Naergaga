@@ -3,7 +3,7 @@
     var isCreate = (bool)ViewBag.isCreate;
     var viewText = isCreate ? "Create" : "Update";
 }
-@using (Html.BeginForm(isCreate ? "Create" : "Edit", "Home"))
+@using (Html.BeginForm(isCreate ? "Create" : "Edit", "Tag"))
 {
     <div class="form-group">
         @Html.LabelFor(m => m.Name, new { @class = "control-label col-sm-2" })

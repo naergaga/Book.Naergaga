@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace Book.Naergaga.Service.BaseSerivces
 {
-    public class EntityService<T, K> : IEntityService<T, K> where T : class
+    public class EntityService<T> : IEntityService<T> where T : class
     {
         internal DbContext _context;
         internal IDbSet<T> _dbset;
@@ -27,9 +27,9 @@ namespace Book.Naergaga.Service.BaseSerivces
             return _context.SaveChanges()>0;
         }
 
-        public bool Delete(K id)
+        public bool Delete(params object[] values)
         {
-            var item = _dbset.Find(id);
+            var item = _dbset.Find(values);
             if (item == null) return false;
             _context.Entry<T>(item).State = EntityState.Deleted;
             return _context.SaveChanges() > 0;
@@ -40,9 +40,9 @@ namespace Book.Naergaga.Service.BaseSerivces
             return _dbset.ToList();
         }
 
-        public T GetById(K id)
+        public T GetById(params object[] values)
         {
-            return _dbset.Find(id);
+            return _dbset.Find(values);
         }
 
         public bool Update(T entity)

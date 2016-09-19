@@ -8,12 +8,21 @@ using System.Web;
 using System.Web.Mvc;
 using Book.Naergaga.Models.Entity;
 using Book.Naergaga.Models.EntityContext;
+using Book.Naergaga.Service.ModelService.Interface;
 
 namespace Book.Naergaga.Areas.Admin.Controllers
 {
     public class BookTagsController : Controller
     {
         private DataContext db = new DataContext();
+        private IBookTagsService service;
+        private ITagService service2;
+
+        public BookTagsController(IBookTagsService service, ITagService service2)
+        {
+            this.service = service;
+            this.service2 = service2;
+        }
 
         // GET: Admin/BookTags
         public ActionResult Index()
@@ -41,7 +50,7 @@ namespace Book.Naergaga.Areas.Admin.Controllers
         public ActionResult Create()
         {
             ViewBag.BookId = new SelectList(db.EBooks, "Id", "Name");
-            ViewBag.TagId = new SelectList(db.Tags, "Id", "Name");
+            ViewData["tags"] = service2.GetAll();
             return View();
         }
 
@@ -50,18 +59,18 @@ namespace Book.Naergaga.Areas.Admin.Controllers
         // 详细信息，请参阅 http://go.microsoft.com/fwlink/?LinkId=317598。
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "Id,BookId,TagId")] BookTags bookTags)
+        public ActionResult Create(int bookId, int[] tag)
         {
-            if (ModelState.IsValid)
+            foreach (var item in tag)
             {
-                db.BookTags.Add(bookTags);
+                db.BookTags.Add(new BookTags
+                {
+                    BookId = bookId,
+                    TagId = item
+                });
                 db.SaveChanges();
-                return RedirectToAction("Index");
             }
-
-            ViewBag.BookId = new SelectList(db.EBooks, "Id", "Name", bookTags.BookId);
-            ViewBag.TagId = new SelectList(db.Tags, "Id", "Name", bookTags.TagId);
-            return View(bookTags);
+            return RedirectToAction("Index");
         }
 
         // GET: Admin/BookTags/Edit/5
@@ -100,13 +109,13 @@ namespace Book.Naergaga.Areas.Admin.Controllers
         }
 
         // GET: Admin/BookTags/Delete/5
-        public ActionResult Delete(int? id)
+        public ActionResult Delete(int? bookId, int? tagId)
         {
-            if (id == null)
+            if (bookId == null||tagId==null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            BookTags bookTags = db.BookTags.Find(id);
+            BookTags bookTags = db.BookTags.Find(bookId,tagId);
             if (bookTags == null)
             {
                 return HttpNotFound();
@@ -117,9 +126,9 @@ namespace Book.Naergaga.Areas.Admin.Controllers
         // POST: Admin/BookTags/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
-        public ActionResult DeleteConfirmed(int id)
+        public ActionResult DeleteConfirmed(int bookId, int tagId)
         {
-            BookTags bookTags = db.BookTags.Find(id);
+            BookTags bookTags = db.BookTags.Find(bookId,tagId);
             db.BookTags.Remove(bookTags);
             db.SaveChanges();
             return RedirectToAction("Index");

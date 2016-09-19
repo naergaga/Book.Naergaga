@@ -1,0 +1,6 @@
+﻿@model List<Book.Naergaga.Models.Entity.Tag>
+
+@foreach (var item in Model)
+{
+    <input name="tag" value="@item.Id" type="checkbox"/>@item.Name
+}

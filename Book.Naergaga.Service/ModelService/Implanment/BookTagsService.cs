@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 
 namespace Book.Naergaga.Service.ModelService.Implanment
 {
-    public class BookTagsService : EntityService<BookTags,int>, IBookTagsService
+    public class BookTagsService : EntityService<BookTags>, IBookTagsService
     {
 
         public BookTagsService(DataContext context) : base(context) { }
@@ -19,5 +19,6 @@ namespace Book.Naergaga.Service.ModelService.Implanment
         {
             return _dbset.Where(t => t.TagId == id).Count();
         }
+
     }
 }

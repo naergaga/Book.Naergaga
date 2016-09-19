@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 
 namespace Book.Naergaga.Service.ModelService.Implanment
 {
-    public class BookService:EntityService<EBook,int>,IBookService
+    public class BookService:EntityService<EBook>,IBookService
     {
 
         public BookService(DataContext context) : base(context) { }

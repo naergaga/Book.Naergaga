@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 
 namespace Book.Naergaga.Service.ModelService.Implanment
 {
-    public class CategoryService:EntityService<Category, int>, ICategoryService
+    public class CategoryService:EntityService<Category>, ICategoryService
     {
 
         public CategoryService(DataContext context) : base(context) { }
