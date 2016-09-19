@@ -11,5 +11,6 @@ namespace Book.Naergaga.Service.ModelService.Interface
     public interface IBookService : IEntityService<EBook, int>
     {
         int CountBookInCategory(int id);
+        int CountBookInAuthor(int id);
     }
 }

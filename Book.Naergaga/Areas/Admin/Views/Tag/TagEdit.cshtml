@@ -6,7 +6,7 @@
 @using (Html.BeginForm(isCreate ? "Create" : "Edit", "Home"))
 {
     <div class="form-group">
-        @Html.LabelFor(m => m.Name, new { @class = "control-label col-sm-2" });
+        @Html.LabelFor(m => m.Name, new { @class = "control-label col-sm-2" })
         <div class="col-sm-10">
             @Html.EditorFor(m => m.Name, new { htmlAttributes = new { @class = "form-control" } })
         </div>

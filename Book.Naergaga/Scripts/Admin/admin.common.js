@@ -1,6 +1,6 @@
 ﻿function showModal(item) {
 	$.get($(item).attr("spot"), function (d) {
-		$(".body-content").prepend(d);
+		$("#modal").html(d);
 		$("#deleteModal").modal("show");
 	});
 }

@@ -17,13 +17,13 @@ namespace Book.Naergaga.Areas.Admin
             context.MapRoute(
                 null,
                 "Admin/{controller}/{action}/Page{currentPage}",
-                new { action = "Index"}
+                new { action = "Index",controller="Books"}
             );
 
             context.MapRoute(
                 "Admin_default",
                 "Admin/{controller}/{action}/{id}",
-                new { action = "Index", id = UrlParameter.Optional }
+                new { action = "Index", controller = "Books",id = UrlParameter.Optional }
             );
         }
     }

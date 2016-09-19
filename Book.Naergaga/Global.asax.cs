@@ -38,6 +38,9 @@ namespace Book.Naergaga
                 c.CreateMap<Category, CategoryViewModel>().AfterMap((s, d) => {
                     d.BookCount = service2.CountBookInCategory(s.Id);
                 });
+                c.CreateMap<Author, AuthorViewModel>().AfterMap((s, d) => {
+                    d.BookCount = service2.CountBookInAuthor(s.Id);
+                });
             });
         }
     }

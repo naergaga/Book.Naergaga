@@ -2,6 +2,7 @@
 @{
     var tag = Model.Tag;
     var isCreate = Model.IsCreate;
+    ViewBag.isCreate = isCreate;
     var viewText = isCreate ? "Create" : "Update";
 }
 <div class="modal fade" id="deleteModal">

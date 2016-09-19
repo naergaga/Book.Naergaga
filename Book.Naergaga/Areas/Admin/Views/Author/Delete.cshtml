@@ -1,4 +1,4 @@
-﻿@model Book.Naergaga.Models.ViewModel.CategoryViewModel
+﻿@model Book.Naergaga.Models.ViewModel.AuthorViewModel
 <div class="modal fade" id="deleteModal">
     <div class="modal-dialog">
         <div class="modal-content">
@@ -9,10 +9,10 @@
                 <h4>delete Category</h4>
             </div>
             <div class="modal-body">
-                <h3>delete the <span class="badge">@Model.Name</span> Category?</h3>
+                <h3>delete the <span class="badge">@Model.Name</span>?</h3>
                 <hr />
                 <div>
-                    <p><span class="text-danger">@Model.BookCount</span>本书使用这个Category.</p>
+                    <p><span class="text-danger">@Model.BookCount</span>本书是这个作者写的。</p>
                 </div>
             </div>
             <div class="modal-footer">

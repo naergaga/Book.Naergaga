@@ -13,5 +13,7 @@ namespace Book.Naergaga.Models.ViewModel
         public string RealName { get; set; } //private
         public string Description { get; set; }
 
+        public int BookCount { get; set; }
+
     }
 }

@@ -52,7 +52,7 @@ namespace Book.Naergaga.Areas.Admin.Controllers
                 IsCreate = true,
                 Tag = new Tag()
             };
-            return PartialView("Edit");
+            return PartialView("Edit",model);
         }
 
         // POST: Admin/Tag/Create
@@ -70,7 +70,11 @@ namespace Book.Naergaga.Areas.Admin.Controllers
         // GET: Admin/Tag/Edit/5
         public ActionResult Edit(int id)
         {
-            return View(service.GetById(id));
+            var model = new TagEditViewModel {
+                IsCreate = false,
+                Tag = service.GetById(id)
+            };
+            return View(model);
         }
 
         // POST: Admin/Tag/Edit/5

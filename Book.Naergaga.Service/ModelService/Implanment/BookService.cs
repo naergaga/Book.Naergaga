@@ -15,6 +15,11 @@ namespace Book.Naergaga.Service.ModelService.Implanment
 
         public BookService(DataContext context) : base(context) { }
 
+        public int CountBookInAuthor(int authorId)
+        {
+            return _dbset.Where(b => b.authorId == authorId).Count();
+        }
+
         public int CountBookInCategory(int categoryId)
         {
             return _dbset.Where(b => b.CategoryId == categoryId).Count();
