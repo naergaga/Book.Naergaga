@@ -24,10 +24,10 @@
             @Html.DisplayNameFor(model => model.PostTime)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Description)
+            @Html.DisplayNameFor(model => model.FileSize)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Path)
+            @Html.DisplayNameFor(model => model.Description)
         </th>
         <th></th>
     </tr>
@@ -47,10 +47,10 @@
             @Html.DisplayFor(modelItem => item.PostTime)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.Description)
+            @Html.DisplayFor(modelItem => item.FileSize)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.Path)
+            @Html.DisplayFor(modelItem => item.Description)
         </td>
         <td>
             @Html.ActionLink("Edit", "Edit", new { id=item.Id }) |

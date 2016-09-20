@@ -11,7 +11,7 @@
 <body>
     <div class="container body-content">
         <div class="navbar navbar-default">
-            <div class="container">
+            <div class="container-fluid">
                 <div class="navbar-header">
                     <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
                         <span class="icon-bar"></span>
@@ -28,6 +28,7 @@
                         <li>@Html.ActionLink("Tag", "Index", "Tag")</li>
                         <li>@Html.ActionLink("BookTags", "Index", "BookTags")</li>
                     </ul>
+                    @Html.Partial("_LoginPartial")
                 </div>
             </div>
         </div>

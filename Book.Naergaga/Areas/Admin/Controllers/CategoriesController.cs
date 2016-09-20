@@ -15,6 +15,7 @@ using Book.Naergaga.Models.ViewModel;
 
 namespace Book.Naergaga.Areas.Admin.Controllers
 {
+    [Authorize]
     public class CategoriesController : Controller
     {
         private ICategoryService service;

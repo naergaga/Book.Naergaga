@@ -8,18 +8,32 @@ using System.Web;
 using System.Web.Mvc;
 using Book.Naergaga.Models.Entity;
 using Book.Naergaga.Models.EntityContext;
+using Book.Naergaga.Service.ModelService.Interface;
+using Book.Naergaga.Models.Common;
 
 namespace Book.Naergaga.Areas.Admin.Controllers
 {
+    [Authorize]
     public class BooksController : Controller
     {
         private DataContext db = new DataContext();
+        private IBookService serivce;
+        private PageOption option;
+
+        public BooksController(IBookService service)
+        {
+            this.serivce = service;
+            option = new PageOption
+            {
+                Asc = false
+            };
+        }
 
         // GET: Admin/EBooks
         public ActionResult Index()
         {
-            var eBooks = db.EBooks.Include(e => e.Author).Include(e => e.Category);
-            return View(eBooks.ToList());
+            var eBooks = serivce.GetPageFull(option, e => e.PostTime);
+            return View(eBooks);
         }
 
         // GET: Admin/EBooks/Details/5
@@ -50,10 +64,15 @@ namespace Book.Naergaga.Areas.Admin.Controllers
         // 详细信息，请参阅 http://go.microsoft.com/fwlink/?LinkId=317598。
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "Id,authorId,CategoryId,Name,PostTime,Description,Path")] EBook eBook)
+        public ActionResult Create([Bind(Include = "Id,authorId,CategoryId,Name,Description")] EBook eBook,HttpPostedFileBase txtFile)
         {
             if (ModelState.IsValid)
             {
+                var path = "~/App_Data/books/"+eBook.Name + ".txt";
+                txtFile.SaveAs(Server.MapPath(path));
+                eBook.FileSize = txtFile.ContentLength;
+                eBook.Path = path;
+                eBook.PostTime = DateTime.Now;
                 db.EBooks.Add(eBook);
                 db.SaveChanges();
                 return RedirectToAction("Index");

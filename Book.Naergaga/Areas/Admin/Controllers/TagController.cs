@@ -12,6 +12,7 @@ using System.Web.Mvc;
 
 namespace Book.Naergaga.Areas.Admin.Controllers
 {
+    [Authorize]
     public class TagController : Controller
     {
         private ITagService service;

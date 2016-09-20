@@ -49,9 +49,8 @@ namespace Book.Naergaga.Models.IdentityViewModel
     public class LoginViewModel
     {
         [Required]
-        [Display(Name = "电子邮件")]
-        [EmailAddress]
-        public string Email { get; set; }
+        [Display(Name = "用户名")]
+        public string UserName { get; set; }
 
         [Required]
         [DataType(DataType.Password)]
@@ -68,6 +67,12 @@ namespace Book.Naergaga.Models.IdentityViewModel
         [EmailAddress]
         [Display(Name = "电子邮件")]
         public string Email { get; set; }
+
+
+        [Required]
+        [Display(Name = "用户名")]
+        [StringLength(50,ErrorMessage ="1-50个字符",MinimumLength =1)]
+        public string UserName { get; set; }
 
         [Required]
         [StringLength(100, ErrorMessage = "{0} 必须至少包含 {2} 个字符。", MinimumLength = 6)]

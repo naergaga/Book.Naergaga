@@ -12,6 +12,7 @@ using Book.Naergaga.Service.ModelService.Interface;
 
 namespace Book.Naergaga.Areas.Admin.Controllers
 {
+    [Authorize]
     public class BookTagsController : Controller
     {
         private DataContext db = new DataContext();

@@ -15,6 +15,7 @@ using Book.Naergaga.Models.ViewModel;
 
 namespace Book.Naergaga.Areas.Admin.Controllers
 {
+    [Authorize]
     public class AuthorController : Controller
     {
         private IAuthorService service;
