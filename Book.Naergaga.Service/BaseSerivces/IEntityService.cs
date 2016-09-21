@@ -14,7 +14,7 @@ namespace Book.Naergaga.Service.BaseSerivces
         bool Delete(params object[] values);
         bool Update(T entity);
         List<T> GetAll();
-        int CountPage(int pageSize);
+        int Count();
         List<T> GetPage<TKey>(PageOption option, Expression<Func<T, TKey>> expression);
         T GetById(params object[] values);
     }

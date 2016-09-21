@@ -15,7 +15,7 @@ namespace Book.Naergaga
 {
     public class MvcApplication : System.Web.HttpApplication
     {
-        IKernel kernel = NinjectWebCommon.CreateKernel();
+        IKernel kernel = NinjectWebCommon.GetKernel();
 
         protected void Application_Start()
         {

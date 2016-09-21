@@ -29,7 +29,7 @@ namespace Book.Naergaga.Areas.Admin.Controllers
         public ActionResult Index(int? currentPage)
         {
             option.CurrentPage = currentPage ?? 1;
-            option.PageCount = service.CountPage(option.PageSize);
+            option.PageCount = option.CountPage(option.PageSize);
             var tags = service.GetPage(option, t => t.Id);
             var model = new TagIndexViewModel
             {

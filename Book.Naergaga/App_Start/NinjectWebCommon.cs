@@ -39,7 +39,7 @@ namespace Book.Naergaga.App_Start
         /// Creates the kernel that will manage your application.
         /// </summary>
         /// <returns>The created kernel.</returns>
-        internal static IKernel CreateKernel()
+        public static IKernel CreateKernel()
         {
             var kernel = new StandardKernel();
             try
@@ -55,6 +55,10 @@ namespace Book.Naergaga.App_Start
                 kernel.Dispose();
                 throw;
             }
+        }
+
+        public static IKernel GetKernel() {
+            return bootstrapper.Kernel;
         }
 
         /// <summary>

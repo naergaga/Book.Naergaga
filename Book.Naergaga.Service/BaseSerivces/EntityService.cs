@@ -64,9 +64,9 @@ namespace Book.Naergaga.Service.BaseSerivces
             }
         }
 
-        public int CountPage(int pageSize)
+        public int Count()
         {
-            return (int)Math.Ceiling(_dbset.Count() / (double)pageSize);
+            return _dbset.Count();
         }
     }
 }

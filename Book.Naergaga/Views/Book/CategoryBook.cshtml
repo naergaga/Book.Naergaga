@@ -1,0 +1,33 @@
+﻿@model Book.Naergaga.Models.PublicView.BookCategoryViewModel
+@using Book.Naergaga.Extensions
+@{
+    ViewBag.Title = "Index";
+    var category = Model.Category;
+    var books = Model.Books;
+}
+
+
+<h3>@category.Name</h3>
+
+<div id="bookList">
+    <table class="table">
+        <thead>
+            <tr>
+                <th>书名</th>
+                <th>发布日期</th>
+                <th>大小</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in books)
+            {
+                <tr>
+                    <td>@Html.ActionLink(item.Name, "Index", "Book", new { id = item.Id }, null)</td>
+                    <td>@item.PostTime</td>
+                    <td>@item.FileSize</td>
+                </tr>
+            }
+            @Html.Paging(Model.Option, "CategoryBook", "Book")
+        </tbody>
+    </table>
+</div>

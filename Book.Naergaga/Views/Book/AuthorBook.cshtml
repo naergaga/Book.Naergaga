@@ -1,0 +1,40 @@
+﻿@model Book.Naergaga.Models.PublicView.BookAuthorViewModel
+@using Book.Naergaga.Extensions
+    @{
+        ViewBag.Title = "Index";
+        var author = Model.Author;
+        var books = Model.Books;
+    }
+
+
+    <div id="authorInfo">
+        <dl class="dl-horizontal">
+            <dt>@Html.DisplayNameFor(m => author.Name)</dt>
+            <dd>@author.Name</dd>
+            <dt>@Html.DisplayNameFor(m => author.Description)</dt>
+            <dd>@author.Description</dd>
+        </dl>
+    </div>
+
+    <div id="bookList">
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>书名</th>
+                    <th>发布日期</th>
+                    <th>大小</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in books)
+            {
+                    <tr>
+                        <td>@Html.ActionLink(item.Name,"Index", "Book", new { id = item.Id }, null)</td>
+                        <td>@item.PostTime</td>
+                        <td>@item.FileSize</td>
+                    </tr>
+                }
+                @Html.Paging(Model.Option,"AuthorBook","Book")
+            </tbody>
+        </table>
+    </div>

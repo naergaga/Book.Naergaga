@@ -19,5 +19,12 @@ namespace Book.Naergaga.Models.Common
         public int CurrentPage { get; set; }
         public int PageCount { get; set; }
         public bool Asc { get; set; }
+
+        //set PageSize first
+        public int CountPage(int count)
+        {
+            return (int)Math.Ceiling(count / (double)PageSize);
+        }
+
     }
 }

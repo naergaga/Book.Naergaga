@@ -10,7 +10,7 @@
         <dt>@Html.DisplayNameFor(m => m.Name)</dt>
         <dd>@Html.DisplayFor(m=>m.Name)</dd>
         <dt>@Html.DisplayNameFor(m => Model.AuthorName)</dt>
-        <dd>@Html.ActionLink(Model.AuthorName,"Index","Author",new { id=Model.authorId},null)</dd>
+        <dd>@Html.ActionLink(Model.AuthorName,"Index","Author",new { authorId=Model.authorId},null)</dd>
         <dt>@Html.DisplayNameFor(m => m.PostTime)</dt>
         <dd>@Html.DisplayFor(m => m.PostTime)</dd>
         <dt>@Html.DisplayNameFor(m => m.Description)</dt>
