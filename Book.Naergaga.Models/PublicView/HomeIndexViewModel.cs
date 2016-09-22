@@ -1,4 +1,5 @@
-﻿using Book.Naergaga.Models.Entity;
+﻿using Book.Naergaga.Models.Common;
+using Book.Naergaga.Models.Entity;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,5 +11,6 @@ namespace Book.Naergaga.Models.PublicView
     public class HomeIndexViewModel
     {
         public List<EBook> Books { get; set; }
+        public PageOption Option { get; set; }
     }
 }

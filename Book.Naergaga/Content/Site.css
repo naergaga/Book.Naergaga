@@ -1,4 +1,18 @@
 ﻿
 body {
     padding-top:20px;
+    background-image:url("/Image/Back");
+    background-size:cover;
+    background-repeat:no-repeat;
+    background-position:center;
+    background-attachment:fixed;
 }
+
+.body-content {
+    padding:10px;
+    border-radius:5px;
+    background-color:white;
+    opacity:0.99;
+    min-height:800px;
+}
+

@@ -1,26 +1,27 @@
 ﻿@model Book.Naergaga.Models.PublicView.HomeIndexViewModel
+@using Book.Naergaga.Extensions
 @{
     ViewBag.Title = "Home Page";
     var books = Model.Books;
 }
 
-@section css {
-    <style>
-        ul,li {
-            margin:0;
-            padding:0;
-        }
-        .bookList ul {
-            list-style:none;
-        }
-    </style>
-}
-
-<div id="bookList1" class="bookList">
-    <ul>
+<table class="table">
+    <thead>
+        <tr>
+            <th>书名</th>
+            <th>发布日期</th>
+            <th>大小</th>
+        </tr>
+    </thead>
+    <tbody>
         @foreach (var item in books)
-        {
-            <li><a href="@Url.Action("Index","Book",new {id=item.Id ,area=""})">@item.Name</a></li>
+            {
+            <tr>
+                <td>@Html.ActionLink(item.Name, "Index", "Book", new { id = item.Id }, null)</td>
+                <td>@item.PostTime</td>
+                <td>@item.FileSize</td>
+            </tr>
         }
-    </ul>
-</div>
+    </tbody>
+</table>
+@Html.Paging(Model.Option, "AuthorBook", "Book")

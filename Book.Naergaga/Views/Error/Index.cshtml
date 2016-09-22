@@ -1,23 +1,22 @@
-﻿@model System.Web.Mvc.HandleErrorInfo
-
-@{
+﻿@{
     Layout = null;
     ViewBag.Title = "Error";
 }
 <!DOCTYPE html>
 <html>
 <head>
-    <title>@ViewBag.Title</title>
+    <title>@ViewBag.Titlte</title>
     <meta charset="utf-8" />
     <link href="~/Content/bootstrap.css" rel="stylesheet" />
 </head>
 <body>
-    <span class="glyphicon glyphicon-warning-sign"></span>
-    <h1 class="text-danger">Error.</h1>
-    <h2 class="text-info">@Model.Exception.Message</h2>
+    <div class="container">
+        <span class="glyphicon glyphicon-warning-sign"></span>
+        <h1 class="text-danger">Error.</h1>
+        <h2 class="text-info">404 no found</h2>
+    </div>
     <script src="~/Scripts/jquery-3.1.0.js"></script>
     <script src="~/Scripts/bootstrap.js"></script>
 </body>
 </html>
-
 

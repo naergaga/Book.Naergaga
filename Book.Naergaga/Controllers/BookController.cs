@@ -51,19 +51,21 @@ namespace Book.Naergaga.Controllers
 
             var model = new HomeIndexViewModel
             {
-                Books = books
+                Books = books,
+                Option = option
             };
             return View(model);
         }
 
-        [Route("Author/{authorId:int}/Page{currentPage:int}")]
-        public ActionResult AuthorBook(int authorId, int currentPage)
+        [Route("Author/{authorId:int}",Order =0)]
+        [Route("Author/{authorId:int}/Page{currentPage:int}",Order =1)]
+        public ActionResult AuthorBook(int authorId, int? currentPage)
         {
             var author = authorService.GetById(authorId);
             var option = new PageOption
             {
                 Asc = false,
-                CurrentPage = currentPage,
+                CurrentPage = currentPage??1,
             };
             option.PageCount = option.CountPage(bookService.CountBookInAuthor(authorId));
             var books = bookService.GetPage(option, c => c.authorId == author.Id);
