@@ -5,15 +5,21 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>@ViewBag.Titlte</title>
+    <title>@ViewBag.Tilte</title>
     <meta charset="utf-8" />
     <link href="~/Content/bootstrap.css" rel="stylesheet" />
+    <link href="~/Content/Site.css" rel="stylesheet" />
+    <style>
+        .container {
+            background-color:white;
+            opacity:0.9;
+        }
+    </style>
 </head>
 <body>
     <div class="container">
-        <span class="glyphicon glyphicon-warning-sign"></span>
-        <h1 class="text-danger">Error.</h1>
-        <h2 class="text-info">404 no found</h2>
+        <h3 class="text-danger">Error.</h3>
+        <p class="text-info">404 no found - @Html.ActionLink("Home", "HomeBook", "Book", new { area = "" }, null)</p>
     </div>
     <script src="~/Scripts/jquery-3.1.0.js"></script>
     <script src="~/Scripts/bootstrap.js"></script>

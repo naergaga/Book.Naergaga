@@ -153,6 +153,7 @@ namespace Book.Naergaga.Controllers
             {
                 var user = new ApplicationUser { UserName = model.UserName, Email = model.Email };
                 var result = await UserManager.CreateAsync(user, model.Password);
+                UserManager.AddToRole(user.Id, "user");
                 if (result.Succeeded)
                 {
                     await SignInManager.SignInAsync(user, isPersistent:false, rememberBrowser:false);
@@ -392,7 +393,7 @@ namespace Book.Naergaga.Controllers
         public ActionResult LogOff()
         {
             AuthenticationManager.SignOut(DefaultAuthenticationTypes.ApplicationCookie);
-            return RedirectToAction("Index", "Home");
+            return RedirectToAction("HomeBook", "Book");
         }
 
         //
@@ -449,7 +450,7 @@ namespace Book.Naergaga.Controllers
             {
                 return Redirect(returnUrl);
             }
-            return RedirectToAction("Index", "Home");
+            return RedirectToAction("HomeBook", "Book");
         }
 
         internal class ChallengeResult : HttpUnauthorizedResult

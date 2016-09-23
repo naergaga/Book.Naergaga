@@ -31,9 +31,9 @@ namespace Book.Naergaga.Areas.Admin.Controllers
             option.CurrentPage = currentPage ?? 1;
             option.PageCount = option.CountPage(option.PageSize);
             var tags = service.GetPage(option, t => t.Id);
-            var model = new TagIndexViewModel
+            var model = new IndexViewModel<Tag>
             {
-                Tags = tags,
+                List = tags,
                 Option = option
             };
             return View(model);

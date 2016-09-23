@@ -14,5 +14,6 @@ namespace Book.Naergaga.Service.ModelService.Implanment
     {
 
         public CategoryService(DataContext context) : base(context) { }
+
     }
 }

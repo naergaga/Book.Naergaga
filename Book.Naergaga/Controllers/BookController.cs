@@ -38,21 +38,28 @@ namespace Book.Naergaga.Controllers
         }
 
         [Route("")]
-        [Route("Page{CurrentPage:int}")]
-        public ActionResult HomeBook(int? currentPage)
+        //[Route("Page{CurrentPage:int}")]
+        public ActionResult HomeBook()
         {
+            var cates = categoryService.GetAll();
             var option = new PageOption
             {
                 Asc = false,
-                CurrentPage = currentPage ?? 1
+                CurrentPage = 1,
+                PageSize = 20,
+                PageCount =1
             };
-            option.PageCount = option.CountPage(bookService.Count());
-            var books = bookService.GetPage(option, c => c.PostTime);
+            foreach (var item in cates)
+            {
+                item.Books = bookService.GetPage(option, c => c.CategoryId == item.Id, c => c.PostTime);
+            }
 
+           var books = bookService.GetPage(option, c => c.PostTime);
             var model = new HomeIndexViewModel
             {
-                Books = books,
-                Option = option
+                Option = option,
+                Lists = cates,
+                Books =books
             };
             return View(model);
         }
@@ -68,7 +75,7 @@ namespace Book.Naergaga.Controllers
                 CurrentPage = currentPage??1,
             };
             option.PageCount = option.CountPage(bookService.CountBookInAuthor(authorId));
-            var books = bookService.GetPage(option, c => c.authorId == author.Id);
+            var books = bookService.GetPage(option, c => c.authorId == author.Id,c=>c.authorId);
 
             var model = new BookAuthorViewModel
             {
@@ -89,8 +96,8 @@ namespace Book.Naergaga.Controllers
                 Asc = false,
                 CurrentPage = currentPage??1,
             };
-            option.PageCount = option.CountPage(bookService.CountBookInAuthor(categoryId));
-            var books = bookService.GetPage(option, c => c.CategoryId == item.Id);
+            option.PageCount = option.CountPage(bookService.CountBookInCategory(categoryId));
+            var books = bookService.GetPage(option, c => c.CategoryId == item.Id, c=>c.CategoryId);
 
             var model = new BookCategoryViewModel
             {

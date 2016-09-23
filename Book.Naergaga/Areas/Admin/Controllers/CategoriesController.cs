@@ -19,21 +19,24 @@ namespace Book.Naergaga.Areas.Admin.Controllers
     public class CategoriesController : Controller
     {
         private ICategoryService service;
-        private PageOption option;
 
-        public CategoriesController(ICategoryService service,PageOption option)
+        public CategoriesController(ICategoryService service)
         {
             this.service = service;
-            this.option = option;
         }
 
         // GET: Admin/Categories
         public ActionResult Index(int? currentPage)
         {
-            option.CurrentPage = currentPage ?? 1;
-            var model = new CategoryIndexViewModel
+            var option = new PageOption
             {
-                Categories = service.GetPage(option,c=>c.Id),
+                Asc = false,
+                CurrentPage = currentPage ?? 1
+            };
+            option.PageCount = option.CountPage(service.Count());
+            var model = new IndexViewModel<Category>
+            {
+                List = service.GetPage(option,c=>c.Id),
                 Option = option
             };
 

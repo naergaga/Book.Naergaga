@@ -8,7 +8,8 @@ using System.Threading.Tasks;
 
 namespace Book.Naergaga.Service.ModelService.Interface
 {
-    public interface ICategoryService:IEntityService<Category>
+    public interface ICategoryService : IEntityService<Category>
     {
+        
     }
 }

@@ -10,6 +10,7 @@ namespace Book.Naergaga.Service.ModelService.Interface
 {
     public interface IBookTagsService : IEntityService<BookTags>
     {
+        List<BookTags> GetListFull();
         int CountTag(int id);
     }
 }

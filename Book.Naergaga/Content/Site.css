@@ -1,11 +1,12 @@
 ﻿
 body {
     padding-top:20px;
-    background-image:url("/Image/Back");
+    /*background-image:url("/Image/Back");
     background-size:cover;
     background-repeat:no-repeat;
     background-position:center;
-    background-attachment:fixed;
+    background-attachment:fixed;*/
+    background-color:lightblue;
 }
 
 .body-content {

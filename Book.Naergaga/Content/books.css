@@ -1,0 +1,32 @@
+﻿.tbox,.xsnew,ul,li {
+    margin:0;
+    padding:0;
+}
+
+.xsnew {
+    padding-left:1em;
+}
+
+.tbox {
+    border:1px solid lightcoral;
+    min-height:200px;
+    margin-bottom:12px;
+}
+
+.tbox dt{
+    background-color:lightcoral;
+    color:white;
+    padding: 5px 10px;
+}
+
+.tbox dd{
+    padding:5px 10px;
+}
+
+.tbox dd ul {
+    list-style:none;
+}
+
+.tline .spanRight {
+    float: right;
+}

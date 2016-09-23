@@ -19,7 +19,7 @@ namespace Book.Naergaga.Extensions
             return new MvcHtmlString(string.Format(
                 "<nav class='page navigation'><ul class='pagination'>" +
                 "{0}{1}{2}" +
-                "</ul><nav>",
+                "</ul></nav>",
                 buildLink(urlHelper, option, action, controller, -1, "&laquo"),
                 buildSomeLinks(urlHelper, option, action, controller),
                 buildLink(urlHelper, option, action, controller, 1, "&raquo")

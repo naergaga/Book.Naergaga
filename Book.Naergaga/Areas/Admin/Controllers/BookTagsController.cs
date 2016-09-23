@@ -9,6 +9,8 @@ using System.Web.Mvc;
 using Book.Naergaga.Models.Entity;
 using Book.Naergaga.Models.EntityContext;
 using Book.Naergaga.Service.ModelService.Interface;
+using Book.Naergaga.Models.Common;
+using Book.Naergaga.Models.AdminView;
 
 namespace Book.Naergaga.Areas.Admin.Controllers
 {
@@ -26,10 +28,21 @@ namespace Book.Naergaga.Areas.Admin.Controllers
         }
 
         // GET: Admin/BookTags
-        public ActionResult Index()
+        public ActionResult Index(int? currentPage)
         {
-            var bookTags = db.BookTags.Include(b => b.Book).Include(b => b.Tag);
-            return View(bookTags.ToList());
+            var option = new PageOption
+            {
+                Asc = false,
+                CurrentPage = currentPage ?? 1
+            };
+            option.PageCount = option.CountPage(service.Count());
+            var model = new IndexViewModel<BookTags>
+            {
+                List = service.GetListFull(),
+                Option = option
+            };
+
+            return View(model);
         }
 
         // GET: Admin/BookTags/Details/5
@@ -112,11 +125,11 @@ namespace Book.Naergaga.Areas.Admin.Controllers
         // GET: Admin/BookTags/Delete/5
         public ActionResult Delete(int? bookId, int? tagId)
         {
-            if (bookId == null||tagId==null)
+            if (bookId == null || tagId == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            BookTags bookTags = db.BookTags.Find(bookId,tagId);
+            BookTags bookTags = db.BookTags.Find(bookId, tagId);
             if (bookTags == null)
             {
                 return HttpNotFound();
@@ -129,7 +142,7 @@ namespace Book.Naergaga.Areas.Admin.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int bookId, int tagId)
         {
-            BookTags bookTags = db.BookTags.Find(bookId,tagId);
+            BookTags bookTags = db.BookTags.Find(bookId, tagId);
             db.BookTags.Remove(bookTags);
             db.SaveChanges();
             return RedirectToAction("Index");

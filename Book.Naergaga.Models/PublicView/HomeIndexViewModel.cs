@@ -10,6 +10,7 @@ namespace Book.Naergaga.Models.PublicView
 {
     public class HomeIndexViewModel
     {
+        public List<Category> Lists { get; set; }
         public List<EBook> Books { get; set; }
         public PageOption Option { get; set; }
     }

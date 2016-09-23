@@ -10,6 +10,7 @@ using Book.Naergaga.Models.Entity;
 using Book.Naergaga.Models.EntityContext;
 using Book.Naergaga.Service.ModelService.Interface;
 using Book.Naergaga.Models.Common;
+using Book.Naergaga.Models.AdminView;
 
 namespace Book.Naergaga.Areas.Admin.Controllers
 {
@@ -17,23 +18,28 @@ namespace Book.Naergaga.Areas.Admin.Controllers
     public class BooksController : Controller
     {
         private DataContext db = new DataContext();
-        private IBookService serivce;
-        private PageOption option;
+        private IBookService service;
 
         public BooksController(IBookService service)
         {
-            this.serivce = service;
-            option = new PageOption
-            {
-                Asc = false
-            };
+            this.service = service;
         }
 
         // GET: Admin/EBooks
-        public ActionResult Index()
+        public ActionResult Index(int? currentPage)
         {
-            var eBooks = serivce.GetPageFull(option, e => e.PostTime);
-            return View(eBooks);
+            var option = new PageOption
+            {
+                Asc = false,
+                CurrentPage = currentPage ?? 1
+            };
+            option.PageCount = option.CountPage(service.Count());
+            var eBooks = service.GetPageFull(option, e => e.PostTime);
+            var model = new IndexViewModel<EBook> {
+                List = eBooks,
+                Option = option
+            };
+            return View(model);
         }
 
         // GET: Admin/EBooks/Details/5

@@ -1,7 +1,8 @@
-﻿@model IEnumerable<Book.Naergaga.Models.Entity.EBook>
-
+﻿@model Book.Naergaga.Models.AdminView.IndexViewModel<Book.Naergaga.Models.Entity.EBook>
+@using Book.Naergaga.Extensions
 @{
     ViewBag.Title = "Index";
+    var list = Model.List;
 }
 
 <h2>Index</h2>
@@ -12,27 +13,27 @@
 <table class="table">
     <tr>
         <th>
-            @Html.DisplayNameFor(model => model.Author.Name)
+            author
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Category.Name)
+            category
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Name)
+            book name
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.PostTime)
+            post time
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.FileSize)
+            fileSize
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Description)
+            Description
         </th>
         <th></th>
     </tr>
 
-@foreach (var item in Model) {
+@foreach (var item in list) {
     <tr>
         <td>
             @Html.DisplayFor(modelItem => item.Author.Name)
@@ -61,3 +62,4 @@
 }
 
 </table>
+@Html.Paging(Model.Option, "Index", "Book")

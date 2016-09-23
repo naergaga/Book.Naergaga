@@ -52,23 +52,37 @@ namespace Book.Naergaga.Service.BaseSerivces
             return _context.SaveChanges()>0;
         }
 
-        public List<T> GetPage<TKey>(PageOption option, Expression<Func<T, TKey>> expression)
+        public List<T> GetPage<TKey>(PageOption option, Expression<Func<T, bool>> where, Expression<Func<T, TKey>> order)
         {
             if (option.CurrentPage < 1 || option.CurrentPage > option.PageCount)
                 throw new Exception("Page Index invalid");
             if (option.Asc)
             {
-                return _dbset.OrderBy(expression).Skip((option.CurrentPage - 1) * option.PageSize).Take(option.PageSize).ToList();
+                return _dbset.Where(where).OrderBy(order).Skip((option.CurrentPage - 1) * option.PageSize).Take(option.PageSize).ToList();
             }
             else
             {
-                return _dbset.OrderByDescending(expression).Skip((option.CurrentPage - 1) * option.PageSize).Take(option.PageSize).ToList();
+                return _dbset.Where(where).OrderByDescending(order).Skip((option.CurrentPage - 1) * option.PageSize).Take(option.PageSize).ToList();
             }
         }
 
         public int Count()
         {
             return _dbset.Count();
+        }
+
+        public List<T> GetPage<TKey>(PageOption option, Expression<Func<T, TKey>> order)
+        {
+            if (option.CurrentPage < 1 || option.CurrentPage > option.PageCount)
+                throw new Exception("Page Index invalid");
+            if (option.Asc)
+            {
+                return _dbset.OrderBy(order).Skip((option.CurrentPage - 1) * option.PageSize).Take(option.PageSize).ToList();
+            }
+            else
+            {
+                return _dbset.OrderByDescending(order).Skip((option.CurrentPage - 1) * option.PageSize).Take(option.PageSize).ToList();
+            }
         }
     }
 }

@@ -1,8 +1,8 @@
-﻿@model Book.Naergaga.Models.AdminView.CategoryIndexViewModel
-
+﻿@model Book.Naergaga.Models.AdminView.IndexViewModel<Book.Naergaga.Models.Entity.Category>
+@using Book.Naergaga.Extensions
 @{
     ViewBag.Title = "Index";
-    var categories = Model.Categories;
+    var categories = Model.List;
     var option = Model.Option;
 }
 
@@ -14,6 +14,10 @@
     <script src="~/Scripts/tablesorter/jquery.tablesorter.combined.js"></script>
     <script src="~/Scripts/Admin/admin.common.js"></script>
     <script src="~/Scripts/Admin/Categories/index.js"></script>
+}
+
+@section body_child {
+    <div id="modal"></div>
 }
 
 <h2>Index</h2>
@@ -43,5 +47,5 @@
     }
 
 </table>
+@Html.Paging(Model.Option, "Index", "Author")
 
-<div id="modal"></div>

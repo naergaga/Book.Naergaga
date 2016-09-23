@@ -1,8 +1,8 @@
-﻿@model Book.Naergaga.Models.AdminView.TagIndexViewModel
+﻿@model Book.Naergaga.Models.AdminView.IndexViewModel<Book.Naergaga.Models.Entity.Tag>
 @using Book.Naergaga.Extensions
 @{
     ViewBag.Title = "View";
-    var tags = Model.Tags;
+    var tags = Model.List;
     var option = Model.Option;
 }
 
@@ -14,6 +14,10 @@
     <script src="~/Scripts/tablesorter/jquery.tablesorter.combined.js"></script>
     <script src="~/Scripts/Admin/admin.common.js"></script>
     <script src="~/Scripts/Admin/Tag/index.js"></script>
+}
+
+@section body_child {
+    <div id="modal"></div>
 }
 
 <h2>Tag</h2>
@@ -47,4 +51,4 @@
     @Html.Paging(option, "Index", "Tag")
     <hr />
 </div>
-<div id="modal"></div>
+

@@ -2,26 +2,61 @@
 @using Book.Naergaga.Extensions
 @{
     ViewBag.Title = "Home Page";
+    var cates = Model.Lists;
     var books = Model.Books;
 }
 
-<table class="table">
-    <thead>
-        <tr>
-            <th>书名</th>
-            <th>发布日期</th>
-            <th>大小</th>
-        </tr>
-    </thead>
-    <tbody>
-        @foreach (var item in books)
-            {
-            <tr>
-                <td>@Html.ActionLink(item.Name, "Index", "Book", new { id = item.Id }, null)</td>
-                <td>@item.PostTime</td>
-                <td>@item.FileSize</td>
-            </tr>
-        }
-    </tbody>
-</table>
-@Html.Paging(Model.Option, "AuthorBook", "Book")
+@section css {
+    <link href="~/Content/books.css" rel="stylesheet" />
+}
+
+<div>
+    @foreach (var item in cates)
+    {
+        <div class="xsnew col-md-6">
+            <dl class="tbox">
+                <dt>
+                    <strong>@item.Name</strong>
+                </dt>
+                <dd>
+                    <ul>
+                        @foreach (var book in item.Books)
+                        {
+                            <li class="tline">
+                                <span class="nameSpan">@Html.ActionLink(book.Name,"Index","Book",new { Id=book.Id},null)</span>
+                                <div class="spanRight">
+                                    <span class="sizeSpan">@Html.FormatLength(book.FileSize)</span>
+                                    <span class="timeSpan">@book.PostTime.ToString("MM-dd")</span>
+                                </div>
+                            </li>
+                        }
+                    </ul>
+                </dd>
+            </dl>
+        </div>
+    }
+    <div class="xsnew col-md-12">
+        <dl class="tbox">
+            <dt>
+                <strong>全部</strong>
+            </dt>
+            <dd>
+                <ul>
+                    @foreach (var book in books)
+                    {
+                        <li class="tline">
+                            <span class="nameSpan">@Html.ActionLink(book.Name, "Index", "Book", new { Id = book.Id }, null)</span>
+                            <div class="spanRight">
+                                <span class="sizeSpan">@Html.FormatLength(book.FileSize)</span>
+                                <span class="timeSpan">@book.PostTime.ToString("MM-dd")</span>
+                            </div>
+                        </li>
+                    }
+                </ul>
+            </dd>
+        </dl>
+    </div>
+
+</div>
+
+<div class="clearfix"></div>

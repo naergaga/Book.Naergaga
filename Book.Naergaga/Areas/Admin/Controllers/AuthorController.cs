@@ -19,21 +19,24 @@ namespace Book.Naergaga.Areas.Admin.Controllers
     public class AuthorController : Controller
     {
         private IAuthorService service;
-        private PageOption option;
 
         public AuthorController(IAuthorService service,PageOption option)
         {
             this.service = service;
-            this.option = option;
         }
 
         // GET: Admin/Categories
         public ActionResult Index(int? currentPage)
         {
-            option.CurrentPage = currentPage ?? 1;
-            var model = new AuthorIndexViewModel
+            var option = new PageOption
             {
-                Author = service.GetPage(option,c=>c.Id),
+                Asc = false,
+                CurrentPage = currentPage ?? 1
+            };
+            option.PageCount = option.CountPage(service.Count());
+            var model = new IndexViewModel<Author>
+            {
+                List = service.GetPage(option,c=>c.Id),
                 Option = option
             };
 

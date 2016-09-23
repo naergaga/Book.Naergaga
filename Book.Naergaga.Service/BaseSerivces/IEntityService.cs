@@ -15,7 +15,8 @@ namespace Book.Naergaga.Service.BaseSerivces
         bool Update(T entity);
         List<T> GetAll();
         int Count();
-        List<T> GetPage<TKey>(PageOption option, Expression<Func<T, TKey>> expression);
+        List<T> GetPage<TKey>(PageOption option, Expression<Func<T, bool>> where, Expression<Func<T, TKey>> order);
+        List<T> GetPage<TKey>(PageOption option, Expression<Func<T, TKey>> order);
         T GetById(params object[] values);
     }
 }
