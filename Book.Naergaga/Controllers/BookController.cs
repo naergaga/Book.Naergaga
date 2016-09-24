@@ -64,8 +64,8 @@ namespace Book.Naergaga.Controllers
             return View(model);
         }
 
-        [Route("Author/{authorId:int}",Order =0)]
-        [Route("Author/{authorId:int}/Page{currentPage:int}",Order =1)]
+        [Route("Author/{authorId:int}",Order =1)]
+        [Route("Author/{authorId:int}/Page{currentPage:int}",Order =0)]
         public ActionResult AuthorBook(int authorId, int? currentPage)
         {
             var author = authorService.GetById(authorId);

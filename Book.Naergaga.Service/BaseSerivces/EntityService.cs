@@ -24,7 +24,7 @@ namespace Book.Naergaga.Service.BaseSerivces
         {
             if (entity == null) return false;
             _dbset.Add(entity);
-            return _context.SaveChanges()>0;
+            return _context.SaveChanges() > 0;
         }
 
         public bool Delete(params object[] values)
@@ -49,7 +49,7 @@ namespace Book.Naergaga.Service.BaseSerivces
         {
             if (entity == null) return false;
             _context.Entry<T>(entity).State = EntityState.Modified;
-            return _context.SaveChanges()>0;
+            return _context.SaveChanges() > 0;
         }
 
         public List<T> GetPage<TKey>(PageOption option, Expression<Func<T, bool>> where, Expression<Func<T, TKey>> order)
@@ -83,6 +83,11 @@ namespace Book.Naergaga.Service.BaseSerivces
             {
                 return _dbset.OrderByDescending(order).Skip((option.CurrentPage - 1) * option.PageSize).Take(option.PageSize).ToList();
             }
+        }
+
+        public int Count(Expression<Func<T, bool>> where)
+        {
+            return _dbset.Where(where).Count();
         }
     }
 }

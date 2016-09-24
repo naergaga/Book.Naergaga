@@ -51,6 +51,7 @@
   <ItemGroup>
     <Compile Include="BaseSerivces\EntityService.cs" />
     <Compile Include="BaseSerivces\IEntityService.cs" />
+    <Compile Include="CommonService\SearchService.cs" />
     <Compile Include="ModelService\Implanment\CategoryService.cs" />
     <Compile Include="ModelService\Implanment\TagService.cs" />
     <Compile Include="ModelService\Implanment\BookTagsService.cs" />

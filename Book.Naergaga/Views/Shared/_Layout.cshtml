@@ -1,6 +1,6 @@
 ﻿@using Ninject
 @using Book.Naergaga.Service.ModelService.Interface;
-@{ 
+@{
     var service = Book.Naergaga.App_Start.NinjectWebCommon.GetKernel().Get<ICategoryService>();
     var categories = service.GetAll();
 }
@@ -8,13 +8,13 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>@ViewBag.Title - Naergaga Book</title>
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
-    @RenderSection("css",false)
+    @RenderSection("css", false)
 </head>
 <body>
     <div class="container">
@@ -32,9 +32,10 @@
                     <ul class="nav navbar-nav">
                         @foreach (var item in categories)
                         {
-                            <li>@Html.ActionLink(item.Name,"CategoryBook","Book",new {categoryId=item.Id },null)</li>
+                            <li>@Html.ActionLink(item.Name, "CategoryBook", "Book", new { categoryId = item.Id }, null)</li>
                         }
                     </ul>
+                    @Html.Partial("_searchPartial",new Book.Naergaga.Models.ViewModel.SearchFormViewModel())
                     @Html.Partial("_LoginPartial")
                 </div>
             </div>

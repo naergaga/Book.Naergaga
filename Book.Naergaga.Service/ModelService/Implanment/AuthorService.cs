@@ -14,5 +14,6 @@ namespace Book.Naergaga.Service.ModelService.Implanment
     {
 
         public AuthorService(DataContext context) : base(context) { }
+
     }
 }

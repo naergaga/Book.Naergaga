@@ -225,9 +225,9 @@
     <Compile Include="Areas\Admin\Controllers\TagController.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\BookController.cs" />
-    <Compile Include="Controllers\ErrorController.cs" />
     <Compile Include="Controllers\ImageController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
+    <Compile Include="Controllers\SearchController.cs" />
     <Compile Include="Extensions\CommonHelper.cs" />
     <Compile Include="Extensions\PagingHelper.cs" />
     <Compile Include="Global.asax.cs">
@@ -349,6 +349,9 @@
     <Content Include="Views\Book\AuthorBook.cshtml" />
     <Content Include="Views\Book\CategoryBook.cshtml" />
     <Content Include="Views\Error\Index.cshtml" />
+    <Content Include="Views\Search\BookSearch.cshtml" />
+    <Content Include="Views\Shared\_SearchPartial.cshtml" />
+    <Content Include="Views\Search\AuthorSearch.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\books\" />

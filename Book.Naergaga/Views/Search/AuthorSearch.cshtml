@@ -1,0 +1,24 @@
+﻿@using Book.Naergaga.Models.Entity
+@using Book.Naergaga.Extensions
+@model Book.Naergaga.Models.PublicView.SearchViewModel<Author>
+@{
+    ViewBag.Title = "BookSearch";
+    var list = Model.List;
+}
+
+<h2>BookSearch</h2>
+
+<div>
+    @foreach (var item in list)
+    {
+        <div>
+            <div class="title">
+                @Html.ActionLink(item.Name, "AuthorBook", "Book", new { authorId = @item.Id }, null)
+            </div>
+            <div class="description">
+                @item.Description
+            </div>
+        </div>
+    }
+</div>
+@Html.Paging(Model.Option,"SearchInfo","Search",Model.RouteData)

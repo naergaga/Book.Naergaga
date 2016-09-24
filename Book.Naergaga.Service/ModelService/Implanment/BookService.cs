@@ -5,7 +5,9 @@ using Book.Naergaga.Service.BaseSerivces;
 using Book.Naergaga.Service.ModelService.Interface;
 using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Data.Entity;
+using System.Data.SqlClient;
 using System.Linq;
 using System.Linq.Expressions;
 using System.Text;
@@ -39,5 +41,6 @@ namespace Book.Naergaga.Service.ModelService.Implanment
                 return _dbset.OrderByDescending(expression).Skip((option.CurrentPage - 1) * option.PageSize).Take(option.PageSize).ToList();
             }
         }
+
     }
 }

@@ -1,0 +1,14 @@
+﻿@model Book.Naergaga.Models.ViewModel.SearchFormViewModel
+@using (Html.BeginForm("SearchInfo", "Search", FormMethod.Get, new { @class = "navbar-form navbar-left" }))
+{
+    <div class="form-group">
+        <select name="Mode" class="form-control">
+            <option value="book">书名</option>
+            <option value="author">作者</option>
+        </select>
+    </div>
+    <div class="form-group">
+        @Html.EditorFor(m => m.Keyword, new { HtmlAttributes=new {@class="form-control" } })
+    </div>
+    <button type="submit" class="btn btn-default">Submit</button>
+}
