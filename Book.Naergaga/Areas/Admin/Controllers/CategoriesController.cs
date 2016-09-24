@@ -12,10 +12,11 @@ using Book.Naergaga.Models.Common;
 using Book.Naergaga.Models.AdminView;
 using AutoMapper;
 using Book.Naergaga.Models.ViewModel;
+using System.Web.Routing;
 
 namespace Book.Naergaga.Areas.Admin.Controllers
 {
-    [Authorize]
+    [Authorize(Roles = "admin")]
     public class CategoriesController : Controller
     {
         private ICategoryService service;
@@ -41,6 +42,26 @@ namespace Book.Naergaga.Areas.Admin.Controllers
             };
 
             return View(model);
+        }
+
+        public ActionResult Search(int? currentPage, string keyword)
+        {
+            PageOption option = new PageOption
+            {
+                Asc = false,
+                CurrentPage = currentPage ?? 1
+            };
+            option.PageCount = option.CountPage(service.Count(t => t.Name.Contains(keyword)));
+            var authors = service.GetPage(option, t => t.Name.Contains(keyword), t => t.Id);
+            var routeData = new RouteValueDictionary();
+            routeData.Add("keyword", keyword);
+            var model = new IndexViewModel<Category>
+            {
+                List = authors,
+                Option = option,
+                RouteData = routeData
+            };
+            return View("Index", model);
         }
 
         // GET: Admin/Categories/Details/5

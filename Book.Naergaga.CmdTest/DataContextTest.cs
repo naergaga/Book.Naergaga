@@ -20,8 +20,8 @@ namespace Book.Naergaga.CmdTest
 
             var author = new Author
             {
-                Name = "国王陛下",
-                Description = "广受欢迎的网络小说作家，《从前有座灵剑山》作者。"
+                Name = "小青蛙",
+                Description = "广受欢迎的网络小说作家，《永动机之殇》作者。"
             };
 
             var tag = new Tag
@@ -33,13 +33,17 @@ namespace Book.Naergaga.CmdTest
             {
                 Author = author,
                 Category = category,
-                Name = "从前有座灵剑山",
+                Name = "永动机之殇",
                 Description = "玄幻，轻松，搞笑",
                 Path = "null",
                 PostTime = DateTime.Now
             };
 
             var book1 = context.EBooks.Add(book);
+            context.Categories.Add(new Category
+            {
+                Name = "女主"
+            });
             context.Tags.Add(tag);
             context.SaveChanges();
 

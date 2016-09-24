@@ -8,6 +8,8 @@ using System.Data.Entity;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Book.Naergaga.Models.Common;
+using System.Linq.Expressions;
 
 namespace Book.Naergaga.Service.ModelService.Implanment
 {
@@ -24,6 +26,11 @@ namespace Book.Naergaga.Service.ModelService.Implanment
         public List<BookTags> GetListFull()
         {
             return _dbset.Include(b => b.Book).Include(b => b.Tag).ToList();
+        }
+
+        public List<BookTags> GetListFull<TKey>(PageOption option, Expression<Func<BookTags, bool>> where, Expression<Func<BookTags, TKey>> order)
+        {
+            return _dbset.Where(where).OrderBy(order).Include(b => b.Book).Include(b => b.Tag).ToList();
         }
     }
 }

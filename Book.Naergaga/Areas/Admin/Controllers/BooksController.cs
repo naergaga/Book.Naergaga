@@ -11,10 +11,12 @@ using Book.Naergaga.Models.EntityContext;
 using Book.Naergaga.Service.ModelService.Interface;
 using Book.Naergaga.Models.Common;
 using Book.Naergaga.Models.AdminView;
+using System.Web.Routing;
+using Book.Naergaga.Common;
 
 namespace Book.Naergaga.Areas.Admin.Controllers
 {
-    [Authorize]
+    [Authorize(Roles = "admin")]
     public class BooksController : Controller
     {
         private DataContext db = new DataContext();
@@ -40,6 +42,26 @@ namespace Book.Naergaga.Areas.Admin.Controllers
                 Option = option
             };
             return View(model);
+        }
+
+        public ActionResult Search(int? currentPage, string keyword)
+        {
+            PageOption option = new PageOption
+            {
+                Asc = false,
+                CurrentPage = currentPage ?? 1
+            };
+            option.PageCount = option.CountPage(service.Count(t => t.Name.Contains(keyword)));
+            var authors = service.GetPage(option, t => t.Name.Contains(keyword), t => t.Id);
+            var routeData = new RouteValueDictionary();
+            routeData.Add("keyword", keyword);
+            var model = new IndexViewModel<EBook>
+            {
+                List = authors,
+                Option = option,
+                RouteData = routeData
+            };
+            return View("Index", model);
         }
 
         // GET: Admin/EBooks/Details/5
@@ -76,7 +98,7 @@ namespace Book.Naergaga.Areas.Admin.Controllers
             {
                 var path = "~/App_Data/books/"+eBook.Name + ".txt";
                 txtFile.SaveAs(Server.MapPath(path));
-                eBook.FileSize = txtFile.ContentLength;
+                eBook.FileSize = Calculate.GetSize(txtFile.ContentLength);
                 eBook.Path = path;
                 eBook.PostTime = DateTime.Now;
                 db.EBooks.Add(eBook);

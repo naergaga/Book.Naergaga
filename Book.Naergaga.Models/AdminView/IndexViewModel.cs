@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Web.Routing;
 
 namespace Book.Naergaga.Models.AdminView
 {
@@ -11,5 +12,6 @@ namespace Book.Naergaga.Models.AdminView
     {
         public List<T> List { get; set; }
         public PageOption Option { get; set; }
+        public RouteValueDictionary RouteData { get; set; }
     }
 }

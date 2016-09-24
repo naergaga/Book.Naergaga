@@ -9,10 +9,11 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using System.Web.Routing;
 
 namespace Book.Naergaga.Areas.Admin.Controllers
 {
-    [Authorize]
+    [Authorize(Roles = "admin")]
     public class TagController : Controller
     {
         private ITagService service;
@@ -37,6 +38,23 @@ namespace Book.Naergaga.Areas.Admin.Controllers
                 Option = option
             };
             return View(model);
+        }
+
+        // GET: Admin/Tag
+        public ActionResult Search(int? currentPage, string keyword)
+        {
+            option.CurrentPage = currentPage ?? 1;
+            option.PageCount = option.CountPage(service.Count(t => t.Name.Contains(keyword)));
+            var tags = service.GetPage(option,t=>t.Name.Contains(keyword), t => t.Id);
+            var routeData = new RouteValueDictionary();
+            routeData.Add("keyword", keyword);
+            var model = new IndexViewModel<Tag>
+            {
+                List = tags,
+                Option = option,
+                RouteData =routeData
+            };
+            return View("Index",model);
         }
 
         // GET: Admin/Tag/Details/5

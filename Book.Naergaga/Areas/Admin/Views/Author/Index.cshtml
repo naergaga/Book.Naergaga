@@ -25,28 +25,42 @@
 <p>
     <a spot="@Url.Action("Create")" class="btnCreateAuthor">Create</a>
 </p>
-<table id="myTable" class="hidden">
-    <thead>
-        <tr>
-            <th>Id</th>
-            <th>Name</th>
-            <th>Description</th>
-            <th></th>
-        </tr>
-    </thead>
-    @foreach (var item in authors)
+<div class="col-sm-6">
+    @using (Html.BeginForm("Search", "Author", FormMethod.Get))
     {
-        <tr>
-            <td>@item.Id</td>
-            <td>@item.Name</td>
-            <td>@item.Description</td>
-            <td>
-                <a spot="@Url.Action("Delete",new { id = item.Id })" class="btnDelAuthor">Delete</a> |
-                <a spot="@Url.Action("Edit",new { id = item.Id })" class="btnEditAuthor">Edit</a> |
-                @Html.ActionLink("Details", "Details", new { id = item.Id })
-            </td>
-        </tr>
+        <div class="input-group">
+            <input type="text" class="form-control" name="keyword" />
+            <span class="input-group-btn">
+                <button type="submit" class="btn btn-default"><span class="glyphicon glyphicon-search"></span></button>
+            </span>
+        </div>
     }
+</div>
+@if (authors != null)
+{
+    <table id="myTable" class="hidden">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Name</th>
+                <th>Description</th>
+                <th></th>
+            </tr>
+        </thead>
+        @foreach (var item in authors)
+        {
+            <tr>
+                <td>@item.Id</td>
+                <td>@item.Name</td>
+                <td>@item.Description</td>
+                <td>
+                    <a spot="@Url.Action("Delete",new { id = item.Id })" class="btnDelAuthor">Delete</a> |
+                    <a spot="@Url.Action("Edit",new { id = item.Id })" class="btnEditAuthor">Edit</a> |
+                    @Html.ActionLink("Details", "Details", new { id = item.Id })
+                </td>
+            </tr>
+        }
 
-</table>
-@Html.Paging(Model.Option,"Index","Author")
+    </table>
+    @Html.Paging(Model.Option, "Index", "Author", Model.RouteData)
+}

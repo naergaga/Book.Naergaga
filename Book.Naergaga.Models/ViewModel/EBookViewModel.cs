@@ -22,6 +22,6 @@ namespace Book.Naergaga.Models.ViewModel
         [DisplayName("作者")]
         public string AuthorName { get; set; }
         [DisplayName("大小")]
-        public long FileSize { get; set; }
+        public string FileSize { get; set; }
     }
 }

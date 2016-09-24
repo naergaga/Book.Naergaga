@@ -17,7 +17,7 @@ namespace Book.Naergaga.Models.Entity
         public DateTime PostTime { get; set; }
         public string Description { get; set; }
         public string Path { get; set; }
-        public long FileSize { get; set; }
+        public string FileSize { get; set; }
 
         public virtual Category Category { get; set; }
         public virtual Author Author { get; set; }

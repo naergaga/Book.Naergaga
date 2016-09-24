@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Book.Naergaga.Common;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -10,8 +11,11 @@ namespace Book.Naergaga.CmdTest
     {
         static void Main(string[] args)
         {
-            DataContextTest test = new DataContextTest();
-            test.TestContext1();
+            //DataContextTest test = new DataContextTest();
+            //test.TestContext1();
+
+            WebDownloader down = new WebDownloader();
+            down.Start();
         }
     }
 }

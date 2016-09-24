@@ -225,6 +225,7 @@
     <Compile Include="Areas\Admin\Controllers\TagController.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\BookController.cs" />
+    <Compile Include="Controllers\ErrorController.cs" />
     <Compile Include="Controllers\ImageController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\SearchController.cs" />
@@ -366,6 +367,10 @@
     <Content Include="Scripts\jquery-3.1.0.min.map" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Book.Naergaga.Common\Book.Naergaga.Common.csproj">
+      <Project>{68AA4881-D5B3-4CE1-AFAC-F081FC350D56}</Project>
+      <Name>Book.Naergaga.Common</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Book.Naergaga.Models\Book.Naergaga.Models.csproj">
       <Project>{6d448f4a-98e6-4ef3-8d11-cc0c96a391c5}</Project>
       <Name>Book.Naergaga.Models</Name>

@@ -54,6 +54,7 @@ namespace Book.Naergaga.Service.BaseSerivces
 
         public List<T> GetPage<TKey>(PageOption option, Expression<Func<T, bool>> where, Expression<Func<T, TKey>> order)
         {
+            if (option.PageCount == 0) return null;
             if (option.CurrentPage < 1 || option.CurrentPage > option.PageCount)
                 throw new Exception("Page Index invalid");
             if (option.Asc)

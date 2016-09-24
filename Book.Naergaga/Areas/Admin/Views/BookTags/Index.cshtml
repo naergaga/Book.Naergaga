@@ -10,6 +10,19 @@
 <p>
     @Html.ActionLink("Create New", "Create")
 </p>
+
+<div class="col-sm-6">
+    @using (Html.BeginForm("Search", "BookTags", FormMethod.Get))
+    {
+        <div class="input-group">
+            <input type="text" class="form-control" name="keyword" />
+            <span class="input-group-btn">
+                <button type="submit" class="btn btn-default"><span class="glyphicon glyphicon-search"></span></button>
+            </span>
+        </div>
+    }
+</div>
+@if (list!=null) { 
 <table class="table">
     <tr>
         <th>
@@ -38,4 +51,5 @@
 }
 
 </table>
-@Html.Paging(Model.Option, "Index", "Author")
+@Html.Paging(Model.Option, "Index", "Author",Model.RouteData)
+}

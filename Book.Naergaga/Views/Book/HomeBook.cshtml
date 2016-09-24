@@ -25,7 +25,7 @@
                             <li class="tline">
                                 <span class="nameSpan">@Html.ActionLink(book.Name,"Index","Book",new { Id=book.Id},null)</span>
                                 <div class="spanRight">
-                                    <span class="sizeSpan">@Html.FormatLength(book.FileSize)</span>
+                                    <span class="sizeSpan">@book.FileSize</span>
                                     <span class="timeSpan">@book.PostTime.ToString("MM-dd")</span>
                                 </div>
                             </li>
@@ -47,7 +47,7 @@
                         <li class="tline">
                             <span class="nameSpan">@Html.ActionLink(book.Name, "Index", "Book", new { Id = book.Id }, null)</span>
                             <div class="spanRight">
-                                <span class="sizeSpan">@Html.FormatLength(book.FileSize)</span>
+                                <span class="sizeSpan">@book.FileSize</span>
                                 <span class="timeSpan">@book.PostTime.ToString("MM-dd")</span>
                             </div>
                         </li>

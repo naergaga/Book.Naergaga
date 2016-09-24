@@ -106,11 +106,13 @@
     <Compile Include="Common\ErrorModel.cs" />
     <Compile Include="Common\PageOption.cs" />
     <Compile Include="EntityContext\DataContext.cs" />
+    <Compile Include="EntityContext\TmpDataContext.cs" />
     <Compile Include="Entity\Author.cs" />
     <Compile Include="Entity\EBook.cs" />
     <Compile Include="Entity\BookTags.cs" />
     <Compile Include="Entity\Category.cs" />
     <Compile Include="Entity\Tag.cs" />
+    <Compile Include="Entity\Temp\TmpBook.cs" />
     <Compile Include="IdentityViewModel\AccountViewModels.cs" />
     <Compile Include="IdentityViewModel\IdentityModels.cs" />
     <Compile Include="IdentityViewModel\ManageViewModels.cs" />

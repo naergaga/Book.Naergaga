@@ -14,6 +14,7 @@ namespace Book.Naergaga.Areas.Admin
 
         public override void RegisterArea(AreaRegistrationContext context) 
         {
+
             context.MapRoute(
                 null,
                 "Admin/{controller}/{action}/Page{currentPage}",
